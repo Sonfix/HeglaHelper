@@ -3,7 +3,8 @@
 ---
 ## Events
 
-1. Message
+1. Message: 
+Every message events analyses the content and checks if there some commands matching for the given data.
 
 
 ---
@@ -33,6 +34,14 @@ All commands can be started by using the prefix ! before any command.
    * [Name]: Mention the member you want to vote for.
    * [Points]: the points you want to give to the member.
    * [Reason]: This one is an optional parameter. You can add a reason for every vote you make.
+6. CoinToss: This command returns if the coin lands on head, tail.
+   
+## Upcomming Features
+
+1. Minigames
+2. Calculation from 1.5 hours to 1 hour and 30 minutes and maybe back
+3. Get expenses for given country
+
    
 ## Memory Management
 

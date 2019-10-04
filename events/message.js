@@ -6,6 +6,7 @@ const Lidl = require('../commands/lidl')
 const Thai = require('../commands/thai')
 const Kniffel = require('../commands/kniffel')
 const Palindrom = require('../commands/palindrom')
+const CoinToss = require('../commands/cointoss')
 
 module.exports = (client, message) => {
     if (message.content.startsWith('!Roll')){
@@ -40,6 +41,9 @@ module.exports = (client, message) => {
     }
     else if (message.content.startsWith('!Palindrom')){
 	return Palindrom(message);
+    }
+    else if (message.content.startsWith('!CoinToss')){
+	return CoinToss(message);
     }
 
 }
