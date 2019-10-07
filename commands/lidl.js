@@ -22,6 +22,7 @@ module.exports = message =>  {
     }
     //Date comparsion will be done above here
     foody.Lidl.Date = new Date().toISOString().slice(0,10);
+    
     if (getList){
 	let list = "Folgende Leute wollen mit in den Lidl: ";
 	Object.keys(foody.Lidl.Participants).forEach(function(k){

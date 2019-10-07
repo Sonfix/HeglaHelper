@@ -93,3 +93,19 @@ As you my noticed this bot has to make some memory management to keep track of w
 }
 ```
    
+4. Expenses are saved in the following way:
+``` json
+{
+	"Expenses":[
+		{"Country":"Deutschland",
+		 "ISO":"DE",
+		 "Areas":[
+			 "Name":"Deutschland",
+			 "Value":"24",
+			 "ValueHalf":"12",
+			 "ValueHotel":"98"
+		 ]
+		}
+	]
+}
+```
