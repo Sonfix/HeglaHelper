@@ -100,10 +100,19 @@ As you my noticed this bot has to make some memory management to keep track of w
 		{"Country":"Deutschland",
 		 "ISO":"DE",
 		 "Areas":[
-			 "Name":"Deutschland",
-			 "Value":"24",
-			 "ValueHalf":"12",
-			 "ValueHotel":"98"
+			 {"Name":"Deutschland",
+			  "Value":"24",
+			  "ValueHalf":"12",
+			  "ValueHotel":"98"
+			 }
+		 ]
+		},
+		{"Country":"Schweiz",
+		 "ISO":"CH",
+		 "Areas":[
+			 {"Name":"Schweiz",
+			  "Value":"64"
+			 }
 		 ]
 		}
 	]
