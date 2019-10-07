@@ -35,12 +35,12 @@ All commands can be started by using the prefix ! before any command.
    * [Points]: the points you want to give to the member.
    * [Reason]: This one is an optional parameter. You can add a reason for every vote you make.
 6. CoinToss: This command returns if the coin lands on head, tail.
+7. Stunden: Converts given decimal number e.g. 1.5 into 1 Hour 30 minutes and 0 seconds
    
 ## Upcomming Features
 
 1. Minigames
-2. Calculation from 1.5 hours to 1 hour and 30 minutes and maybe back
-3. Get expenses for given country
+2. Get expenses for given country
 
    
 ## Memory Management
