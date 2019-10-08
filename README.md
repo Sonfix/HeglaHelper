@@ -36,11 +36,12 @@ All commands can be started by using the prefix ! before any command.
    * [Reason]: This one is an optional parameter. You can add a reason for every vote you make.
 6. CoinToss: This command returns if the coin lands on head, tail.
 7. Stunden: Converts given decimal number e.g. 1.5 into 1 Hour 30 minutes and 0 seconds
+8. Spesen: Gets the expenses for given country. The given country must be written after the whitespace. ``` !Spesen Polen ```
    
 ## Upcomming Features
 
 1. Minigames
-2. Get expenses for given country
+2. Add parameter to Spesen to get the values of half day and hotel.
 
    
 ## Memory Management
@@ -101,19 +102,24 @@ As you my noticed this bot has to make some memory management to keep track of w
 		 "ISO":"DE",
 		 "Areas":[
 			 {"Name":"Deutschland",
+			  "Area":"Deutschland",
 			  "Value":"24",
 			  "ValueHalf":"12",
 			  "ValueHotel":"98"
 			 }
 		 ]
 		},
-		{"Country":"Schweiz",
-		 "ISO":"CH",
+		{"Country":"Polen",
+		 "ISO":"PL",
 		 "Areas":[
-			 {"Name":"Schweiz",
-			  "Value":"64"
-			 }
+			 {"Name":"Polen",
+			  "Area":"Krakau",
+			  "Value":"27",
+			  "ValueHalf":"",
+			  "ValueHotel":""
+			  }
 		 ]
+			
 		}
 	]
 }

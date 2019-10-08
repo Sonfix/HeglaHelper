@@ -17,8 +17,9 @@ module.exports = message => {
 	    msg = "Spesen: \n";
 	    console.log(expenses.Expenses[k].Areas);
 	    Object.keys(expenses.Expenses[k].Areas).forEach(function (a) {
-		msg += "Gebiet: " + expenses.Expenses[k].Areas[a].Name + " Betrag: " + expenses.Expenses[k].Areas[a].Value;
-	    })				   
+		msg += 'Gebiet: *' + expenses.Expenses[k].Areas[a].Area  + "* Betrag: **" + expenses.Expenses[k].Areas[a].Value + '** \n';
+	    })
+	    //' Betrag(An- und Abreisetag) ' + expenses.Expenses[k].Areas[a].ValueHalf +
 	}
     })
     if (msg == ""){
