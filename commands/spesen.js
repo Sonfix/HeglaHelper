@@ -9,13 +9,20 @@ module.exports = message => {
 	return;
     }
     region = vals[1];
+    if (vals.length >= 3){
+	if (vals[2].startsWith('-r')){
+
+	}
+	else{
+	    region += ' ' + vals[2];
+	}
+    }
     let file = fs.readFileSync(expenseFile);
     let expenses = JSON.parse(file);
     let msg = "";
     Object.keys(expenses.Expenses).forEach(function(k) {
 	if (expenses.Expenses[k].Country == region || expenses.Expenses[k].ISO == region){
 	    msg = "Spesen: \n";
-	    console.log(expenses.Expenses[k].Areas);
 	    Object.keys(expenses.Expenses[k].Areas).forEach(function (a) {
 		msg += 'Gebiet: *' + expenses.Expenses[k].Areas[a].Area  + "* Betrag: **" + expenses.Expenses[k].Areas[a].Value + '** \n';
 	    })

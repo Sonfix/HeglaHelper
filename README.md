@@ -37,7 +37,11 @@ All commands can be started by using the prefix ! before any command.
 6. CoinToss: This command returns if the coin lands on head, tail.
 7. Stunden: Converts given decimal number e.g. 1.5 into 1 Hour 30 minutes and 0 seconds
 8. Spesen: Gets the expenses for given country. The given country must be written after the whitespace. ``` !Spesen Polen ```
-   
+9. Timer: Starts a timer. This command gives two options of executing it. 
+   * Simply a number: Number will interpreted as minutes.
+   * Encodedstring: ``` !Timer 1h30m25s ``` 
+10. CoffeeTimer: Start defualt timer with 9 minutes.
+
 ## Upcomming Features
 
 1. Minigames
