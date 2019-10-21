@@ -3,15 +3,66 @@ var jsonPath = '../votes.json';
 module.exports = message => {
     const member = message.mentions.members.first()
     let vals = message.content.split(/[ ,]+/);
-    if(vals.length < 3){
+    let getList = false;
+    let endVote = false;
+
+
+    for (var k  = 0; k < vals.length; k++){
+	if (vals[k].startsWith('-')){
+	    if (vals[k] === '-list'){
+		getList = true;
+	    }
+	    else if (vals[k] === '-end'){
+		endVote = true;
+	    }
+	}
+    }
+
+    if(vals.length < 3 && !(getList || endVote)){
 	message.reply('Nicht genug Parameter! Bitte mindestens die Punkte anzahl angeben!');
 	return;
     }
+    let content = fs.readFileSync(jsonPath);
+    let db = JSON.parse(content);	    
+
+    if (getList){
+	let s = ""
+	Object.keys(db.members).forEach(function (k){
+	    var name = db.members[k].Name;
+	    var votes = getVotes(db, k);
+	    s += name + ' hat ' + votes + ' Punkte \n';
+	})
+	message.reply(s);
+	return;
+    }
+    else if (endVote){
+	var max_vote = 0;
+	var name = "";
+	var id = "";
+	Object.keys(db.members).forEach(function (k){
+	    var v = getVotes(db, k);
+	    if (v > max_vote){
+		max_vote = v;
+		name = db.members[k].Name;
+		id = db.members[k].ID;
+	    }
+	})
+	var role = message.guild.roles.find(role => role.name === "Auszubildender des Monats");
+	//remove last
+	var lastWinner = message.guild.members.find(mem => mem.roles.find(r => r.id == role.id));
+	lastWinner.removeRole(role);
+	//Set new
+	var winner = message.guild.members.find(mem => mem.id == id);
+	winner.addRole(role.id);
+	
+	var s = name + " hat **gewonnen**! Mit einer Anzahl von: " + max_vote;
+	message.reply(s);
+	return;
+    }
+	
     let val = vals[2];
     let reason = " ";
     if (vals.length > 3) reason = vals[3];
-    let content = fs.readFileSync(jsonPath);
-    let db = JSON.parse(content);
     if (member)
     {
 	let memberAlreadyExists = false;
@@ -32,7 +83,9 @@ module.exports = message => {
 	    vote["Values"] = vals[2];
 	    vote["Reason"] = vals[3];
 	    id["ID"] = member.user.id;
+	    id["Name"] = member.user.username;
 	    id["Votes"] = [];
+	    id["Votes"].push(vote);
 	    db['members'].push(id);
 	}
     }
@@ -43,4 +96,12 @@ module.exports = message => {
 	console.log('Saved');
    })    
 
+}
+
+function getVotes(json, id){
+    var votes = 0;
+    Object.keys(json.members[id].Votes).forEach(function (h){
+	votes += Number(json.members[id].Votes[h].Values);
+    })
+    return votes;
 }
