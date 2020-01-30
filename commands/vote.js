@@ -2,17 +2,19 @@ const fs = require("fs")
 var jsonPath = '../votes.json';
 module.exports = message => {
     const member = message.mentions.members.first()
-    let vals = message.content.split(/[ ,]+/);
+//    const author = message.
+    let values = message.content.split(/[ ,]+/);
     let getList = false;
     let endVote = false;
+    let addPerRole = false;
+    let enoughPermission = false;    
 
-
-    for (var k  = 0; k < vals.length; k++){
-	if (vals[k].startsWith('-')){
-	    if (vals[k] === '-list'){
+    for (var k  = 0; k < values.length; k++){
+	if (values[k].startsWith('-')){
+	    if (values[k] === '-list'){
 		getList = true;
 	    }
-	    else if (vals[k] === '-end'){
+	    else if (values[k] === '-end'){
 		endVote = true;
 	    }
 	}
@@ -25,6 +27,8 @@ module.exports = message => {
     let content = fs.readFileSync(jsonPath);
     let db = JSON.parse(content);	    
 
+   // enoughPermission = isInList(db.AllowedVoters, "ID", 
+    
     if (getList){
 	let s = ""
 	Object.keys(db.members).forEach(function (k){
@@ -104,4 +108,13 @@ function getVotes(json, id){
 	votes += Number(json.members[id].Votes[h].Values);
     })
     return votes;
+}
+
+function isInList(json, keyname, value){
+    Objects.keys(json).forEach(function (k){
+	if (json[keyname] == value){
+	    return true;
+	}
+    });
+    return false;
 }
